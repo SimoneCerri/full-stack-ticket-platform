@@ -77,24 +77,67 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     - `php artisan make:model Ticket -mcrsR`
     - `php artisan make:model Category -mcrsR`
     - `php artisan make:model Operator -mcrsR`
+- Define relationships inside every **Model**.
+    - use Illuminate\Database\Eloquent\Relations\BelongsTo; (1to1)
+    - use Illuminate\Database\Eloquent\Relations\BelongsToMany; (1toN)
+    - use Illuminate\Database\Eloquent\Relations\HasOne; (1to1)
+    - use Illuminate\Database\Eloquent\Relations\HasMany; (1toN)
+    ```php
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+    ```
 - Populate the **migration** file with our data-types/entities.
     - $table->id();
     - $table->string('title');
     - etc etc
 - Populate **seeder** as well, with `Faker`.
-    - use App\Models\Category;
-    - use Faker\Factory as Faker;
+    - use App\Models\Category; (include the model)
+    - use Faker\Factory as Faker; (include Faker)
     - for loop with your desired number of fake info.
     ```php
-        for ($i = 0; $i < 15; $i++) {
-            Category::create([
-                'name' => $faker->unique()->word,
-            ]);
-        }
+    for ($i = 0; $i < 15; $i++) {
+        Category::create([
+            'name' => $faker->unique()->word,
+        ]);
+    }
+    ```
+    - or use an array of your desired categories.
+    ```php
+    $categories = [
+        'PHP',
+        'HTML',
+        'CSS',
+        'JAVASCRIPT',
+        'BOOTSTRAP',
+        'SASS',
+        'VUEJS',
+        'VITE',
+        'LARAVEL',
+        'MYSQL',
+    ];
+
+    foreach ($categories as $category) {
+        Category::create([
+            'name' => $category,
+        ]);
+    }
     ```
     - do it for every entities.
-- 
-
+- Remember always to secure protected fillable inside the **Model** file.
+    - `protected $fillable = ['name'];`
+- Add this to **DatabaseSeeder** file for seed all togheter.
+    ```php
+    $this->call([
+        CategorySeeder::class,
+        OperatorSeeder::class,
+        TicketSeeder::class,
+    ]);
+    ```
+- Seed your **Database** with `php artisan migrate --seed`
+    - if is not created yet choose 'yes'.
+    - `php artisan migrate:fresh --seed` for recreate it from zero.
 ## Links ##
 - [Migration Laravel](https://www.example.com)
 

@@ -5,20 +5,30 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
-use Faker\Factory as Faker;
 
 class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        $faker = Faker::create();
+        $categories = [
+            'PHP',
+            'HTML',
+            'CSS',
+            'JAVASCRIPT',
+            'BOOTSTRAP',
+            'SASS',
+            'VUEJS',
+            'VITE',
+            'LARAVEL',
+            'MYSQL',
+        ];
 
-        for ($i = 0; $i < 15; $i++) {
+        foreach ($categories as $category) {
             Category::create([
-                'name' => $faker->unique()->word,
+                'name' => $category,
             ]);
         }
     }

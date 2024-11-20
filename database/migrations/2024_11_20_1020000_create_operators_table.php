@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('operators', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('name');
+            $table->string('surname');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('operators');
     }
 };

@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tickets', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->foreignId('operator_id')->constrained('operators')->onDelete('cascade');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('operator_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('operator_id')->references('id')->on('operators')->onDelete('cascade');
             $table->enum('status', ['ASSIGNED', 'IN_PROGRESS', 'CLOSED'])->default('ASSIGNED');
             $table->timestamps();
         });
