@@ -44,6 +44,20 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 - Create a new repo on `GitHub` named 'full-stack-ticket-platform'.
 - Create folder on your disk with the same name.
 - Open the folder on `Visual Studio Code`.
-- `composer create-project laravel/laravel:^10.0` inside a Bash terminal.
-- On VSCode -> Source Controll -> Initialize Repository -> Repositories -> Remote -> '+' -> 'full-stack-ticket-platform' -> enter the GitHub's page of your repo.
-- Inside Bash initial commit.
+- `composer create-project laravel/laravel:^10.0` inside a **Bash** terminal.
+- On *VSCode* -> *Source Controll* -> *Initialize Repository* -> *Repositories* -> *Remote* -> '+' -> 'full-stack-ticket-platform' -> enter the GitHub's page of your repo.
+- Inside **Bash** initial commit.
+    - `git add .`
+    - `git commit -m"init"`
+    - `git push --set-upstream full-stack-ticket-platform main`
+- Let's create a ER diagram.
+    - new file `tables.drawio`.
+    - under *Entity Relation* pick some tables.
+    - drop into page and fill with entity needed.
+        - Users.
+        - Tickets.
+        - Operators.
+        - Categories.
+    - fill each table with *data-types* as well.
+    - Define relationships between tables.
+
