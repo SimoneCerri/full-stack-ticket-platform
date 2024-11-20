@@ -138,6 +138,25 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 - Seed your **Database** with `php artisan migrate --seed`
     - if is not created yet choose 'yes'.
     - `php artisan migrate:fresh --seed` for recreate it from zero.
+- Had some trouble with migration/seed because I create first **Ticket** model.
+    - change the order of migration executed by changing the number in their file's name.
+    - (example) 1010000 for categories migration.
+    - (example) 1020000 for operators migration.
+    - (example) 153856 for tickets migration.
+    - `php artisan migrate:fresh --seed`
 ## Links ##
-- [Migration Laravel](https://www.example.com)
-
+- [Visual Studio Code](https://code.visualstudio.com/) .
+- [Create Laravel Project](https://laravel.com/docs/10.x/installation) .
+- [Connect repo to Project](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories) .
+- [GitHub Commands](https://education.github.com/git-cheat-sheet-education.pdf) .
+- [ER Diagram](https://www.geeksforgeeks.org/introduction-of-er-model/) .
+- [ER with drawio](https://drawio-app.com/blog/entity-relationship-diagrams-with-draw-io/) .
+- [Data-Types](https://laravel.com/docs/4.2/schema) .
+- [MAMP](https://www.mamp.info/en/windows/) .
+- [Laravel Model](https://laravel.com/docs/10.x/eloquent) .
+- [Laravel Migration](https://laravel.com/docs/10.x/migrations#main-content) .
+- [Laravel Seeder](https://laravel.com/docs/10.x/seeding#writing-seeders) .
+- [Faker](https://fakerphp.org/) .
+- [Laravel Controller](https://laravel.com/docs/10.x/controllers#main-content) .
+- [Laravel Resource](https://laravel.com/docs/10.x/eloquent-resources#main-content) .
+- [Laravel Mass Assignment](https://laravel.com/docs/10.x/eloquent#mass-assignment-json-columns) .
