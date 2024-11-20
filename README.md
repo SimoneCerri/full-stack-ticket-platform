@@ -60,4 +60,41 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
         - Categories.
     - fill each table with *data-types* as well.
     - Define relationships between tables.
+    - Modify tables's color.
+    - Modify background.
+    - *File* -> *Export* -> *.png*
+- Change file `.env` information with your DB info.
+    - DB_CONNECTION
+    - DB_HOST
+    - DB_PORT
+    - DB_DATABASE
+    - DB_USERNAME
+    - DB_PASSWORD
+- Start *MAMP* -> *Start Server* -> *TOOLS* -> *PHPMYADMIN*
+- Inside a Bash terminal `php artisan serve` -> click on your port .
+    - Leave this Bash open.
+- Open another Bash terminal and create all the **models** with migration, seeder, controller, resource.
+    - `php artisan make:model Ticket -mcrsR`
+    - `php artisan make:model Category -mcrsR`
+    - `php artisan make:model Operator -mcrsR`
+- Populate the **migration** file with our data-types/entities.
+    - $table->id();
+    - $table->string('title');
+    - etc etc
+- Populate **seeder** as well, with `Faker`.
+    - use App\Models\Category;
+    - use Faker\Factory as Faker;
+    - for loop with your desired number of fake info.
+    ```php
+        for ($i = 0; $i < 15; $i++) {
+            Category::create([
+                'name' => $faker->unique()->word,
+            ]);
+        }
+    ```
+    - do it for every entities.
+- 
+
+## Links ##
+- [Migration Laravel](https://www.example.com)
 
