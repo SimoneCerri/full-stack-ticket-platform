@@ -29,7 +29,11 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        //
+        $validatedRequest = $request->validated();
+        $title = $validatedRequest['title'];
+        $ticket = Ticket::create($validatedRequest);
+
+        return to_route('admin.tickets.index', compact('ticket'))->with('status', "Add successfully ticket '$title' !");
     }
 
     /**

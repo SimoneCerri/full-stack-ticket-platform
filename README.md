@@ -164,7 +164,7 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     - blade
     - no
     - 1
-- Add a controller for our Admin/Dashboard
+- Add a controller for our Admin/Dashboard .
     - `php artisan make:controller Admin/DashboardController`
     - inside controller
     ```php
@@ -185,13 +185,35 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     ```php
     public const HOME = '/admin';
     ```
-    - scaffolding inside *resources>views* an 'admin' folder
-        - create *dashboard.blade.php* into admin folder
+    - scaffolding inside *resources>views* an 'admin' folder.
+        - create *dashboard.blade.php* into admin folder.
         - add a folder for each entities
             - *categories*
             - *operators*
             - *tickets*
-    
+
+### CRUD ###
+
+- C.R.U.D. -> (CREATE-READ-UPDATE-DELETE).
+- Add files inside *resources/views/admin/tickets*
+    - create.blade.php
+    - index.blade.php
+    - show.blade.php
+    - edit.blade.php
+- Move all controllers inside *Http/Controllers/Admin*
+- Store function of **TicketController** .
+    - validate request $validatedRequest = $request->validated();
+    - create it $ticket = Ticket::create($validatedRequest);
+    - return a view
+- Add your rules of authentication inside **StoreTicketRequest** .
+    ```php
+    'title' => 'required|min:10|max:50|',
+    'description' => 'required|min:10|max:255|',
+    'status' => 'required',
+    'category_id' => 'required',
+    'operator_id' => 'required',
+    ```
+
 
 ## Links ##
 - [Visual Studio Code](https://code.visualstudio.com/) .
@@ -210,3 +232,4 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 - [Laravel Resource](https://laravel.com/docs/10.x/eloquent-resources#main-content) .
 - [Laravel Mass Assignment](https://laravel.com/docs/10.x/eloquent#mass-assignment-json-columns) .
 - [Laravel Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze) .
+- [CRUD](https://kinsta.com/blog/laravel-crud/) .
