@@ -41,6 +41,8 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 
 ## Documentation ##
 
+### Getting start ###
+
 - Create a new repo on `GitHub` named 'full-stack-ticket-platform'.
 - Create folder on your disk with the same name.
 - Open the folder on `Visual Studio Code`.
@@ -50,6 +52,9 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     - `git add .`
     - `git commit -m"init"`
     - `git push --set-upstream full-stack-ticket-platform main`
+
+### ER Diagram ###
+
 - Let's create a ER diagram.
     - new file `tables.drawio`.
     - under *Entity Relation* pick some tables.
@@ -63,6 +68,9 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     - Modify tables's color.
     - Modify background.
     - *File* -> *Export* -> *.png*
+
+### DB setup ###
+
 - Change file `.env` information with your DB info.
     - DB_CONNECTION
     - DB_HOST
@@ -73,6 +81,9 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 - Start *MAMP* -> *Start Server* -> *TOOLS* -> *PHPMYADMIN*
 - Inside a Bash terminal `php artisan serve` -> click on your port .
     - Leave this Bash open.
+
+### Model / Migration / Seeder ###
+
 - Open another Bash terminal and create all the **models** with migration, seeder, controller, resource.
     - `php artisan make:model Ticket -mcrsR`
     - `php artisan make:model Category -mcrsR`
@@ -144,6 +155,44 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     - (example) 1020000 for operators migration.
     - (example) 153856 for tickets migration.
     - `php artisan migrate:fresh --seed`
+
+### Authentication ###
+
+- For authentication we have to install **Breeze**.
+    - `composer require laravel/breeze --dev`
+    - `php artisan breeze:install`
+    - blade
+    - no
+    - 1
+- Add a controller for our Admin/Dashboard
+    - `php artisan make:controller Admin/DashboardController`
+    - inside controller
+    ```php
+    return view('admin.dashboard');
+    ```
+    - inside web.php use App\Http\Controllers\Admin\DashboardController;
+    - add controller inside Route::middleware
+    ```php
+    Route::middleware(['auth', 'verified'])
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+
+        Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+    });
+    ```
+    - update costant inside *RouteServiceProvider.php*
+    ```php
+    public const HOME = '/admin';
+    ```
+    - scaffolding inside *resources>views* an 'admin' folder
+        - create *dashboard.blade.php* into admin folder
+        - add a folder for each entities
+            - *categories*
+            - *operators*
+            - *tickets*
+    
+
 ## Links ##
 - [Visual Studio Code](https://code.visualstudio.com/) .
 - [Create Laravel Project](https://laravel.com/docs/10.x/installation) .
@@ -160,3 +209,4 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 - [Laravel Controller](https://laravel.com/docs/10.x/controllers#main-content) .
 - [Laravel Resource](https://laravel.com/docs/10.x/eloquent-resources#main-content) .
 - [Laravel Mass Assignment](https://laravel.com/docs/10.x/eloquent#mass-assignment-json-columns) .
+- [Laravel Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze) .
