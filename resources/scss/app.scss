@@ -1,1 +1,108 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+/*
+###############
+- Debug
+- Common
+- Utilities
+- MediaQuery
+- Header
+- Main
+- Footer
+###############
+*/
+
+
+/* #region Debug */
+
+/* #endregion Debug */
+
+
+/* #region Common */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* #endregion Common */
+
+
+/* #region Utilities */
+
+/* #endregion Utilities */
+
+
+/* #region MediaQuery */
+
+/* #region Desktops & Large screens */
+@media screen and (max-width: 1200px) {
+    /* Desktops & Large screens */
+}
+
+/* #endregion Desktops & Large screens */
+
+/* #region Small screens & Laptops */
+@media screen and (max-width: 1024px) {
+    /* Small screens & Laptops */
+}
+
+/* #endregion Small screens & Laptops */
+
+/* #region iPads & Tablets */
+@media screen and (max-width: 768px) {
+    /* iPads & Tablets */
+}
+
+/* #endregion iPads & Tablets */
+
+/* #region Mobile */
+@media screen and (max-width: 480px) {
+    /* Mobile */
+}
+
+/* #endregion Mobile */
+
+/* #endregion MediaQuery */
+
+
+/* #region Header */
+
+/* #endregion Header */
+
+
+/* #region Main */
+.pagination>li>a {
+    background-color: #333;
+    color: white;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    color: red;
+    background-color: #333;
+    border: solid 1px red !important;
+}
+
+.pagination>.active>span {
+    color: #333 !important;
+    background-color: red !important;
+    border: solid 1px red !important;
+}
+
+.pagination>.active>span:hover {
+    background-color: #333 !important;
+    border: solid 1px red !important;
+    color: red !important;
+}
+
+
+/* #endregion Main */
+
+
+/* #region Footer */
+
+/* #endregion Footer */

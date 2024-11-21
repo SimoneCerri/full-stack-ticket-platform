@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Http\Controllers\Controller;
+
 
 class TicketController extends Controller
 {
@@ -13,7 +15,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tickets.index', ['tickets' => Ticket::orderByDesc('id')->paginate(5)]);
     }
 
     /**
