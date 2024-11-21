@@ -194,7 +194,11 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 
 ### CRUD ###
 
-- C.R.U.D. -> (CREATE-READ-UPDATE-DELETE).
+- `C.R.U.D. -> (CREATE-READ-UPDATE-DELETE)`
+- Add route in *web.php* inside the *middleware*.
+    ```php
+    Route::resource('tickets', TicketController::class);
+    ```
 - Add files inside *resources/views/admin/tickets*
     - create.blade.php
     - index.blade.php
@@ -213,7 +217,7 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     'category_id' => 'required',
     'operator_id' => 'required',
     ```
-
+- Populate Index,Show,Create files with some layout.
 
 ## Links ##
 - [Visual Studio Code](https://code.visualstudio.com/) .

@@ -10,6 +10,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+                    <a class="btn btn-danger text-dark" href="{{ route('admin.tickets.create') }}">
+                        <i class="fa-solid fa-plus fa-lg fa-fw"></i>
+                        <span class="fw-bold px-1">
+                            ADD PROJECT
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
