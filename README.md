@@ -41,6 +41,13 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 
 ## Documentation ##
 
+Mi sono cimentato nello sviluppo di un progetto per gestire dei Ticket (di supporto), dove l'utente (admin) ha la possibilità di gestire i suddetti ticket, tra creazione, aggiornamento, rimozione etc (CRUD).
+I linguaggi utilizzati sono :
+- `Laravel`, per la creazione del progetto e lo scaffolding nonchè per la realizzazione dei metodi che ho utilizzato per creare/leggere/modificare/cancellare le nostre entità (ticket).
+- `HTML/CSS` per quanto riguarda il markup e il suo stile.
+- `Bootstrap`, per velocizzare il processo di creazione delle view tramite classi già pronte.
+- `MySQL`, per la creazione e la gestione del DB all'interno di PHPMyAdmin.
+
 ### Getting start ###
 
 - Create a new repo on `GitHub` named 'full-stack-ticket-platform'.
@@ -209,7 +216,7 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     - validate request $validatedRequest = $request->validated();
     - create it $ticket = Ticket::create($validatedRequest);
     - return a view
-- Add your rules of authentication inside **StoreTicketRequest** & **UpdateTicketRequest** .
+- Add your rules of authentication inside **StoreTicketRequest**
     ```php
     'title' => 'required|min:10|max:50|',
     'description' => 'required|min:10|max:255|',
@@ -230,7 +237,10 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
 - Edit function in **TicketController**
     - return view('admin.tickets.edit', compact('ticket'));
 - Update function in **TicketController**
-    - 
+    - validate request
+    - update it
+    - return view
+- Add your rules of authentication inside **UpdateTicketRequest**
 
 ## Links ##
 - [Visual Studio Code](https://code.visualstudio.com/) .
