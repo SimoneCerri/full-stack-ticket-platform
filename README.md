@@ -216,7 +216,7 @@ I linguaggi utilizzati sono :
     - validate request $validatedRequest = $request->validated();
     - create it $ticket = Ticket::create($validatedRequest);
     - return a view
-- Add your rules of authentication inside **StoreTicketRequest**
+- Add your rules of authentication inside **StoreTicketRequest** and set authorize on *true*
     ```php
     'title' => 'required|min:10|max:50|',
     'description' => 'required|min:10|max:255|',
@@ -240,7 +240,7 @@ I linguaggi utilizzati sono :
     - validate request
     - update it
     - return view
-- Add your rules of authentication inside **UpdateTicketRequest**
+- Add your rules of authentication inside **UpdateTicketRequest** and set authorize on *true*
 - Taking some time for update the general layout and add some style.
 
 ## Links ##
