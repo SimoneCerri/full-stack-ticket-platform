@@ -6,7 +6,8 @@ use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Http\Controllers\Controller;
-
+use App\Models\Category;
+use App\Models\Operator;
 
 class TicketController extends Controller
 {
@@ -23,7 +24,10 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('admin.tickets.create');
+        $operators = Operator::all();
+        $categories = Category::all();
+        $states = ['ASSIGNED', 'IN_PROGRESS', 'CLOSED'];
+        return view('admin.tickets.create', compact('categories', 'operators', 'states'));
     }
 
     /**

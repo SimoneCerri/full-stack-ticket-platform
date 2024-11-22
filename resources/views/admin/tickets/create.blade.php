@@ -23,63 +23,53 @@
                     <div class="text-danger py-2">{{ $message }}</div>
                 @enderror
             </div>
-            {{-- <div class="mb-3 py-3">
-                <label for="type_id" class="form-label">Type</label>
-                <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+            {{-- ADD CATEGORIES OPERATORS STATUS --}}
+            <div class="mb-3 py-3">
+                <label for="category_id" class="form-label">Category</label>
+                <select class="form-select @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
                     <option selected disabled>Select one</option>
-                    @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
-                            {{ $type->name }}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ $category->id == old('type_id') ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('type_id')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3 py-3">
+                <label for="operator_id" class="form-label">Operator</label>
+                <select class="form-select @error('operator_id') is-invalid @enderror" name="operator_id" id="operator_id">
+                    <option selected disabled>Select one</option>
+                    @foreach ($operators as $operator)
+                        <option value="{{ $operator->id }}" {{ $operator->id == old('type_id') ? 'selected' : '' }}>
+                            {{ $operator->name }}
+                        </option>
                     @endforeach
                 </select>
                 @error('type_id')
                     <div class="text-danger py-2">{{ $message }}</div>
                 @enderror
-            </div> --}}
-            {{-- <div class="d-flex flex-wrap py-3">
-                @foreach ($technologies as $technology)
-                    <div class="form-check col-2">
-                        <input class="form-check-input @error('technologies') is-invalid @enderror" type="checkbox"
-                            value="{{ $technology->id }}" id="tech-{{ $technology->id }}" name="technologies[]"
-                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
-                        <label class="form-check-label px-3" for="tech-{{ $technology->id }}"> {{ $technology->name }}
-                        </label>
+            </div>
+            <div class="mb-3 py-3">
+                <label for="status" class="form-label">Select a status</label>
+                <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
+                    <option selected disabled>Select one</option>
+                    @foreach ($states as $state)
+                        <option value="{{ $state }}" {{ $state == old('type_id') ? 'selected' : '' }}>
+                            {{ $state }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('type_id')
+                    <div class="text-danger py-2">
+                        {{ $message }}
                     </div>
-                    <div class="px-3">
-                        |
-                    </div>
-                @endforeach
-                @error('technologies')
-                    <div class="text-danger py-2">{{ $message }}</div>
                 @enderror
-            </div> --}}
-            {{-- <div class="mb-3">
-                <label for="url1" class="form-label">GitHub link</label>
-                <input type="text" class="form-control @error('url1') is-invalid @enderror" name="url1" id="url1"
-                    aria-describedby="url1HelpId" placeholder="New Project" value="{{ old('url1') }}" />
-                <small id="url1HelpId" class="form-text text-muted">Insert a link</small>
-                @error('url1')
-                    <div class="text-danger py-2">{{ $message }}</div>
-                @enderror
-            </div> --}}
-            {{-- <div class="mb-3">
-                <label for="url2" class="form-label">Preview link</label>
-                <input type="text" class="form-control @error('url2') is-invalid @enderror" name="url2" id="url2"
-                    aria-describedby="url2HelpId" placeholder="New Project" value="{{ old('url2') }}" />
-                <small id="url2HelpId" class="form-text text-muted">Insert a link</small>
-                @error('url2')
-                    <div class="text-danger py-2">{{ $message }}</div>
-                @enderror
-            </div> --}}
-            {{-- <div class="mb-3">
-                <label for="img" class="form-label">Image</label>
-                <input type="file" class="form-control @error('img') is-invalid @enderror" name="img" id="img"
-                    aria-describedby="imgHelpId" placeholder="New image for project" value="" />
-                <small id="imgHelpId" class="form-text text-muted">Insert an image</small>
-                @error('img')
-                    <div class="text-danger py-2">{{ $message }}</div>
-                @enderror
-            </div> --}}
+            </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"

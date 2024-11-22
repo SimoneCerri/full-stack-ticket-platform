@@ -241,6 +241,7 @@ I linguaggi utilizzati sono :
     - update it
     - return view
 - Add your rules of authentication inside **UpdateTicketRequest**
+- Taking some time for update the general layout and add some style.
 
 ## Links ##
 - [Visual Studio Code](https://code.visualstudio.com/) .
