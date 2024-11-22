@@ -11,7 +11,7 @@
         </div>
     </header>
     <div class="container py-5">
-        {{-- @include('partials.validation-messagge') --}}
+        @include('partials.validation-message')
         <form action="{{ route('admin.tickets.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

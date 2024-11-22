@@ -51,7 +51,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        return view('admin.tickets.edit', compact('ticket'));
     }
 
     /**
@@ -67,6 +67,9 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $title = $ticket['title'];
+
+        $ticket->delete();
+        return to_route('admin.tickets.index')->with('status', "Deleted '$title' ticket with success..");
     }
 }

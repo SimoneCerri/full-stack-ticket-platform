@@ -20,10 +20,10 @@
     </header>
     <section class="py-5">
         <div class="container">
-            {{-- @include('partials.session-message') --}}
+            @include('partials.session-message')
             {{-- @dd(session('status')) --}}
             <h4 class="py-3">
-                List of projects:
+                List of tickets:
             </h4>
             <div class="table-responsive rounded-top-3">
                 <table class="table table-secondary align-middle text-center">

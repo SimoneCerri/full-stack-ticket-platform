@@ -209,7 +209,7 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     - validate request $validatedRequest = $request->validated();
     - create it $ticket = Ticket::create($validatedRequest);
     - return a view
-- Add your rules of authentication inside **StoreTicketRequest** .
+- Add your rules of authentication inside **StoreTicketRequest** & **UpdateTicketRequest** .
     ```php
     'title' => 'required|min:10|max:50|',
     'description' => 'required|min:10|max:255|',
@@ -218,6 +218,19 @@ Per questa fase non è prevista alcuna visualizzazione avanzata dei ticket se no
     'operator_id' => 'required',
     ```
 - Populate Index,Show,Create files with some layout.
+- Index function in **TicketController**
+    - return view('admin.tickets.index', ['tickets' => Ticket::orderByDesc('id')->paginate(5)]);
+- Show function in **TicketController**
+    - return view('admin.tickets.show', compact('ticket'));
+- Create function in **TicketController**
+    - return view('admin.tickets.create');
+- Delete function in **TicketController**
+    - $ticket->delete();
+    - return to_route('admin.tickets.index')->with('status', "Deleted '$title' ticket with success..");
+- Edit function in **TicketController**
+    - return view('admin.tickets.edit', compact('ticket'));
+- Update function in **TicketController**
+    - 
 
 ## Links ##
 - [Visual Studio Code](https://code.visualstudio.com/) .

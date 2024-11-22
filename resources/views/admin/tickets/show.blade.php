@@ -1,6 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
+    <header>
+        <div class="container-fluid bg-dark py-3 text-danger shadow">
+            <div class="container d-flex align-items-center justify-content-center">
+                <h1 class="text-center">
+                    <strong>
+                        {{ $ticket->title }}
+                    </strong>
+                </h1>
+            </div>
+        </div>
+    </header>
     <div class="container py-5"></div>
     <div class="row justify-content-center">
         <div class="col-6">
