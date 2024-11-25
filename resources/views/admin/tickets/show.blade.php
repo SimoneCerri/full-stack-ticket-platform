@@ -27,21 +27,17 @@
                     {{ $ticket->description }}
                 </p>
                 <hr>
-                <button class="btn btn-dark text-danger">
+
+                <!-- Pulsante che mostra il form di modifica -->
+                <button id="statusButton" class="btn btn-dark text-danger">
                     {{ $ticket->status }}
                 </button>
-                <form action="{{ route('admin.tickets.update', $ticket) }}" method="post" enctype="multipart/form-data">
+
+                <!-- Modifica dello status, inizialmente nascosta -->
+                <form id="statusForm" action="{{ route('admin.tickets.update', $ticket) }}" method="POST"
+                    style="display:none;">
                     @method('PATCH')
                     @csrf
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <div class="mb-3 py-3">
                         <label for="status" class="form-label">Change ticket status</label>
                         <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
@@ -65,18 +61,29 @@
                                 EDIT
                             </span>
                         </button>
-                        <div class="px-3">
-                            <a class="btn btn-dark text-danger" href="{{ route('admin.tickets.index') }}">
-                                <i class="fa-solid fa-rotate-left"></i>
-                                <span class="px-2 fw-bold">
-                                    CANCEL AND BACK TO TICKETS
-                                </span>
-                            </a>
-                        </div>
                     </div>
                 </form>
+
+                <!-- Pulsante per tornare indietro alla lista dei ticket -->
+                <div class="d-flex justify-content-center mt-3">
+                    <a class="btn btn-dark text-danger" href="{{ route('admin.tickets.index') }}">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span class="px-2 fw-bold">
+                            CANCEL AND BACK TO TICKETS
+                        </span>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
-    </div>
+
+    <script>
+        // Funzione per mostrare il form quando si clicca il pulsante
+        document.getElementById('statusButton').addEventListener('click', function() {
+            var form = document.getElementById('statusForm');
+            form.style.display = 'block'; // Mostra il form di modifica
+            this.style.display = 'none'; // Nasconde il pulsante
+        });
+    </script>
 @endsection

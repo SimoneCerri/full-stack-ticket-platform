@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Operator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 
 class TicketController extends Controller
@@ -58,20 +59,39 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        return view('admin.tickets.edit', compact('ticket'));
+        $operators = Operator::all();
+        $categories = Category::all();
+        $states = ['ASSIGNED', 'IN_PROGRESS', 'CLOSED'];
+
+        return view('admin.tickets.edit', compact('ticket', 'states', 'categories', 'operators'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTicketRequest $request, Ticket $ticket)
+    public function update(Request $request, Ticket $ticket)
     {
-        $validatedRequest = $request->validated();
-        //dd('Validated Request:', $validatedRequest);
-        $ticket->update($validatedRequest);
-        $title = $ticket['title'];
-        //dd('Ticket Updated:', $ticket->fresh());
-        return to_route('admin.tickets.index')->with('status', "Ticket '$title' updated with success !");
+        if ($request->has('status') && $request->only('status')) {
+            $validated = $request->validate([
+                'status' => 'required|in:ASSIGNED,IN_PROGRESS,CLOSED',
+            ]);
+
+            $ticket->update($validated);
+
+            return to_route('admin.tickets.index')->with('status', "Ticket status updated successfully.");
+        } else {
+            $validated = $request->validate([
+                'title' => 'required|min:10|max:50',
+                'description' => 'required|min:10|max:255',
+                'status' => 'required|in:ASSIGNED,IN_PROGRESS,CLOSED',
+                'category_id' => 'required',
+                'operator_id' => 'required',
+            ]);
+
+            $ticket->update($validated);
+            $title = $ticket->title;
+            return to_route('admin.tickets.index')->with('status', "Ticket '$title' updated with success !");
+        }
     }
 
     /**
