@@ -25,6 +25,38 @@
             <h4 class="py-3">
                 List of tickets:
             </h4>
+            <form action="{{ route('admin.tickets.index') }}" method="GET">
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <select name="status" class="form-select" aria-label="Filter by status">
+                            <option value="">All Statuses</option>
+                            <option value="ASSIGNED" {{ request('status') == 'ASSIGNED' ? 'selected' : '' }}>Assigned
+                            </option>
+                            <option value="IN_PROGRESS" {{ request('status') == 'IN_PROGRESS' ? 'selected' : '' }}>In
+                                Progress</option>
+                            <option value="CLOSED" {{ request('status') == 'CLOSED' ? 'selected' : '' }}>Closed</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <select name="category_id" class="form-select" aria-label="Filter by category">
+                            <option value="">All Categories</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-dark text-success">
+                            <i class="fa-solid fa-filter"></i> Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </form>
             <div class="table-responsive rounded-top-3">
                 <table class="table table-secondary align-middle text-center">
                     <thead class="table-dark">

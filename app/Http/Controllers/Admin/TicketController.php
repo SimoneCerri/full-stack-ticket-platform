@@ -17,9 +17,26 @@ class TicketController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.tickets.index', ['tickets' => Ticket::orderByDesc('id')->paginate(5)]);
+        $status = $request->get('status');
+        $categoryId = $request->get('category_id');
+
+        $tickets = Ticket::query();
+
+        if ($status) {
+            $tickets->where('status', $status);
+        }
+
+        if ($categoryId) {
+            $tickets->where('category_id', $categoryId);
+        }
+
+        $tickets = $tickets->orderBy('created_at', 'desc')->with(['category', 'operator'])->paginate(10);
+
+        $categories = Category::all();
+
+        return view('admin.tickets.index', compact('tickets', 'categories'));
     }
 
     /**
