@@ -50,7 +50,7 @@
                         </select>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-6 text-end">
                         <button type="submit" class="btn btn-dark text-success">
                             <i class="fa-solid fa-filter"></i> Apply Filters
                         </button>

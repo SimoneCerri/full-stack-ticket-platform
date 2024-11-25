@@ -8,7 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'TitcketPlatform') }}</title>
+    <link rel="icon" href="{{ asset('icon_bg.jpg') }}" type="image/png">
+
+
 
 
     <!-- Fonts -->
@@ -30,7 +33,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
-                        <img width="50" src="{{ Vite::asset('resources/img/logosmall.jpg') }}">
+                        <img width="50" src="/tickets_logo.jpg">
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
