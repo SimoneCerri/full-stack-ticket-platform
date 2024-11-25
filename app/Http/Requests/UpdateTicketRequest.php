@@ -22,11 +22,11 @@ class UpdateTicketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:10|max:50|',
-            'description' => 'required|min:10|max:255|',
+            /* 'title' => 'required|min:10|max:50|',
+            'description' => 'required|min:10|max:255|', */
             'status' => 'required',
-            'category_id' => 'required',
-            'operator_id' => 'required',
+            /* 'category_id' => 'required',
+            'operator_id' => 'required', */
         ];
     }
 }

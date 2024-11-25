@@ -67,9 +67,10 @@ class TicketController extends Controller
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
         $validatedRequest = $request->validated();
+        //dd('Validated Request:', $validatedRequest);
         $ticket->update($validatedRequest);
         $title = $ticket['title'];
-
+        //dd('Ticket Updated:', $ticket->fresh());
         return to_route('admin.tickets.index')->with('status', "Ticket '$title' updated with success !");
     }
 

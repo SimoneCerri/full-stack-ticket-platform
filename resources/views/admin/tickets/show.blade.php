@@ -33,6 +33,15 @@
                 <form action="{{ route('admin.tickets.update', $ticket) }}" method="post" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="mb-3 py-3">
                         <label for="status" class="form-label">Change ticket status</label>
                         <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
