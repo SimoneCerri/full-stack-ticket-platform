@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Operator;
 use Illuminate\Support\Facades\Log;
 
+
 class TicketController extends Controller
 {
     /**

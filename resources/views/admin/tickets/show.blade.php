@@ -31,8 +31,8 @@
                     {{ $ticket->status }}
                 </button>
                 <form action="{{ route('admin.tickets.update', $ticket) }}" method="post" enctype="multipart/form-data">
-                    @csrf
                     @method('PATCH')
+                    @csrf
                     <div class="mb-3 py-3">
                         <label for="status" class="form-label">Change ticket status</label>
                         <select class="form-select @error('status') is-invalid @enderror" name="status" id="status">
