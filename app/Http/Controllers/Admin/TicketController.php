@@ -71,7 +71,7 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        if ($request->has('status') && $request->only('status')) {
+        if ($request->has('status') && !$request->hasAny(['title', 'description', 'category_id', 'operator_id'])) {
             $validated = $request->validate([
                 'status' => 'required|in:ASSIGNED,IN_PROGRESS,CLOSED',
             ]);
@@ -79,19 +79,19 @@ class TicketController extends Controller
             $ticket->update($validated);
 
             return to_route('admin.tickets.index')->with('status', "Ticket status updated successfully.");
-        } else {
-            $validated = $request->validate([
-                'title' => 'required|min:10|max:50',
-                'description' => 'required|min:10|max:255',
-                'status' => 'required|in:ASSIGNED,IN_PROGRESS,CLOSED',
-                'category_id' => 'required',
-                'operator_id' => 'required',
-            ]);
-
-            $ticket->update($validated);
-            $title = $ticket->title;
-            return to_route('admin.tickets.index')->with('status', "Ticket '$title' updated with success !");
         }
+
+        $validated = $request->validate([
+            'title' => 'required|min:10|max:50',
+            'description' => 'required|min:10|max:255',
+            'status' => 'required|in:ASSIGNED,IN_PROGRESS,CLOSED',
+            'category_id' => 'required|exists:categories,id',
+            'operator_id' => 'required|exists:operators,id',
+        ]);
+
+        $ticket->update($validated);
+
+        return to_route('admin.tickets.index')->with('status', "Ticket '{$ticket->title}' updated successfully.");
     }
 
     /**
