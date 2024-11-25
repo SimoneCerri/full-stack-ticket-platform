@@ -25,21 +25,6 @@ class TicketController extends Controller
      */
     public function create()
     {
-        /* $user = auth()->user();
-
-        if (!$user) {
-            Log::warning('Nessun utente autenticato.');
-        } else {
-            Log::info('Utente corrente:', ['user' => $user]);
-
-            // Controlla se il metodo permissions esiste prima di chiamarlo
-            if (method_exists($user, 'permissions')) {
-                Log::info('Permessi utente:', ['permissions' => $user->permissions->pluck('name')->toArray()]);
-            } else {
-                Log::warning('Il metodo permissions non è definito per il modello User.');
-            }
-        } */
-
         $operators = Operator::all();
         $categories = Category::all();
         $states = ['ASSIGNED', 'IN_PROGRESS', 'CLOSED'];
@@ -63,7 +48,8 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        return view('admin.tickets.show', compact('ticket'));
+        $states = ['ASSIGNED', 'IN_PROGRESS', 'CLOSED'];
+        return view('admin.tickets.show', compact('ticket', 'states'));
     }
 
     /**
