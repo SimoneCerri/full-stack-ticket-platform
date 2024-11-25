@@ -27,13 +27,30 @@
                     {{ $ticket->description }}
                 </p>
                 <hr>
-
-                <!-- Pulsante che mostra il form di modifica -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>
+                        <strong>
+                            Category:
+                        </strong>
+                        {{ $ticket->category ? $ticket->category->name : 'N/A' }}
+                    </p>
+                    <p>
+                        <strong>
+                            Operator:
+                        </strong>
+                        {{ $ticket->operator ? $ticket->operator->name : 'N/A' }}
+                    </p>
+                    <p>
+                        <strong>
+                            Created at:
+                        </strong>
+                        {{ $ticket->created_at->format('d-m-Y H:i') }}
+                    </p>
+                </div>
                 <button id="statusButton" class="btn btn-dark text-danger">
                     {{ $ticket->status }}
                 </button>
 
-                <!-- Modifica dello status, inizialmente nascosta -->
                 <form id="statusForm" action="{{ route('admin.tickets.update', $ticket) }}" method="POST"
                     style="display:none;">
                     @method('PATCH')
@@ -64,7 +81,6 @@
                     </div>
                 </form>
 
-                <!-- Pulsante per tornare indietro alla lista dei ticket -->
                 <div class="d-flex justify-content-center mt-3">
                     <a class="btn btn-dark text-danger" href="{{ route('admin.tickets.index') }}">
                         <i class="fa-solid fa-rotate-left"></i>
@@ -79,11 +95,10 @@
     </div>
 
     <script>
-        // Funzione per mostrare il form quando si clicca il pulsante
         document.getElementById('statusButton').addEventListener('click', function() {
             var form = document.getElementById('statusForm');
-            form.style.display = 'block'; // Mostra il form di modifica
-            this.style.display = 'none'; // Nasconde il pulsante
+            form.style.display = 'block';
+            this.style.display = 'none';
         });
     </script>
 @endsection

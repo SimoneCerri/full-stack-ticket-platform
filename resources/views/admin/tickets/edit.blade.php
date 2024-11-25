@@ -18,7 +18,8 @@
             <div class="col-8">
                 <div class="card p-4">
                     <h5 class="card-title text-center">
-                        ID: {{ $ticket->id }}
+                        <strong>ID:</strong>
+                        {{ $ticket->id }}
                     </h5>
 
                     <!-- Form per aggiornare il ticket -->
@@ -27,18 +28,18 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="title" class="form-label">Ticket Title</label>
+                            <label for="title" class="form-label fw-bold">Ticket Title</label>
                             <input type="text" name="title" class="form-control"
                                 value="{{ old('title', $ticket->title) }}">
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="form-label">Ticket Description</label>
+                            <label for="description" class="form-label fw-bold">Ticket Description</label>
                             <textarea name="description" class="form-control">{{ old('description', $ticket->description) }}</textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label for="status" class="form-label">Ticket Status</label>
+                            <label for="status" class="form-label fw-bold">Ticket Status</label>
                             <select name="status" class="form-select">
                                 <option value="ASSIGNED"
                                     {{ old('status', $ticket->status) == 'ASSIGNED' ? 'selected' : '' }}>ASSIGNED</option>
@@ -51,7 +52,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="category_id" class="form-label">Category</label>
+                            <label for="category_id" class="form-label fw-bold">Category</label>
                             <select name="category_id" class="form-select">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
@@ -63,7 +64,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="operator_id" class="form-label">Operator</label>
+                            <label for="operator_id" class="form-label fw-bold">Operator</label>
                             <select name="operator_id" class="form-select">
                                 @foreach ($operators as $operator)
                                     <option value="{{ $operator->id }}"
